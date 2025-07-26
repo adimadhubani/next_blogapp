@@ -3,6 +3,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import { Prisma } from "@prisma/client";
+import Link from "next/link";
 
 type SearchPageProps = {
   articles: Prisma.ArticlesGetPayload<{
@@ -30,6 +31,7 @@ export function AllArticlesPage({ articles }: SearchPageProps) {
           className="group relative overflow-hidden transition-all hover:shadow-lg"
         >
           <div className="p-6">
+          <Link href={`/articles/${article.id}`}>
             {/* Image Container */}
             <div className="relative mb-4 h-48 w-full overflow-hidden rounded-xl">
               <Image
@@ -37,7 +39,7 @@ export function AllArticlesPage({ articles }: SearchPageProps) {
                 alt={article.title}
                 fill
                 className="object-cover"
-              />
+                />
             </div>
             {/* Article Content */}
             <h3 className="text-xl font-semibold text-foreground">
@@ -60,6 +62,7 @@ export function AllArticlesPage({ articles }: SearchPageProps) {
                 {article.createdAt.toDateString()}
               </div>
             </div>
+                </Link>
           </div>
         </Card>
       ))}

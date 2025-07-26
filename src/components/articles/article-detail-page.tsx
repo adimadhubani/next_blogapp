@@ -2,10 +2,10 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { MessageCircle } from "lucide-react";
 import { Prisma } from "@prisma/client";
-// import CommentForm from "../comments/comment-form";
-// import CommentList from "../comments/comment-list";
+import CommentForm from "../comments/comment-form";
+import CommentList from "../comments/comment-list";
 import { prisma } from "@/lib/prisma"; 
-// import LikeButton from "./actions/like-button";
+import LikeButton from "./actions/like-button";
 import { auth } from "@clerk/nextjs/server";
 
 type ArticleDetailPageProps = {
@@ -87,7 +87,7 @@ export async function ArticleDetailPage({ article }: ArticleDetailPageProps) {
           />
 
           {/* Article Actions */}
-          {/* <LikeButton articleId={article.id} likes={likes} isLiked = {isLiked}/> */}
+          <LikeButton articleId={article.id} likes={likes} isLiked = {isLiked}/>
 
           {/* Comments Section */}
           <Card className="p-6">
@@ -99,10 +99,10 @@ export async function ArticleDetailPage({ article }: ArticleDetailPageProps) {
             </div>
 
             {/* Comment Form */}
-            {/* <CommentForm articleId={article.id} /> */}
+            <CommentForm articleId={article.id} />
 
             {/* Comments List */}
-            {/* <CommentList comments={comments} /> */}
+            <CommentList comments={comments} />
           </Card>
         </article>
       </main>
