@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import {
-  BarChart,
+  // BarChart,
   FileText,
   LayoutDashboard,
-  MessageCircle,
+  // MessageCircle,
   MessagesSquare,
-  Settings,
+  // Settings,
   Video,
 } from "lucide-react";
 import Link from "next/link";

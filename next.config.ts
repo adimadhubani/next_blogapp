@@ -1,17 +1,21 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com'
+        hostname: 'images.unsplash.com',
       },
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com'
-      }
-    ]
+        hostname: 'res.cloudinary.com',
+      },
+    ],
+    // Optional: Uncomment if using a custom Cloudinary loader
+    // loader: 'cloudinary',
+    // path: 'https://res.cloudinary.com/your-account',
   },
 
   env: {
@@ -27,19 +31,17 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    // Correct serverActions configuration
     serverActions: {
-      bodySizeLimit: '2mb', // or whatever size limit you need
-      allowedOrigins: [], // add domains if needed for CORS
+      bodySizeLimit: '2mb',
+      allowedOrigins: ['https://your-app.onrender.com'], // Add Render URL
     },
-    
-    // Other experimental features
     serverComponentsExternalPackages: ['@google/generative-ai'],
   },
 
   webpack: (config) => {
+    config.resolve.alias['@'] = path.join(__dirname, 'src');
     return config;
-  }
+  },
 };
 
 export default nextConfig;

@@ -11,7 +11,7 @@ import {
   TableRow,
 } from "../ui/table";
 import Link from "next/link";
-import type { Prisma } from "@prisma/client";
+// import type { Prisma } from "@prisma/client";
 import { deleteArticle } from "@/actions/delete-article";
  
 type ArticleWithRelations = {
