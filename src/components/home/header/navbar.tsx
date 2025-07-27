@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Menu, X } from "lucide-react";
+import { Search, Menu, X, MessageSquare } from "lucide-react";
 import { ModeToggle } from "../../dark-mode";
 import Link from "next/link";
 import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
@@ -54,14 +54,18 @@ export function Navbar() {
               >
                 Dashboard
               </Link>
+
+              <Link href="/chatbot" className="flex items-center gap-1 hover:text-blue-500">
+                <MessageSquare /> Blog Assistant
+              </Link>
             </div>
           </div>
 
           {/* Right Section - Search & Actions */}
           <div className="flex items-center gap-4">
             {/* Search Bar (Desktop) */}
-            <SearchInput/>
-            
+            <SearchInput />
+
 
             {/* Theme Toggle */}
             <ModeToggle />
@@ -141,6 +145,10 @@ export function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Dashboard
+              </Link>
+
+              <Link href="/chatbot" className="flex items-center gap-1 hover:text-blue-500">
+                <MessageSquare /> Blog Assistant
               </Link>
             </div>
 

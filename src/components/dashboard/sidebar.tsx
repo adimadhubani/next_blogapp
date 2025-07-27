@@ -7,7 +7,9 @@ import {
   FileText,
   LayoutDashboard,
   MessageCircle,
+  MessagesSquare,
   Settings,
+  Video,
 } from "lucide-react";
 import Link from "next/link";
 const Sidebar = () => {
@@ -65,30 +67,37 @@ function DashboardSidebar({ closeSheet }: { closeSheet?: () => void }) {
             Articles
           </Button>
         </Link>
+
+
+        <Link href={"/chatbot"}>
+          <Button
+            variant="ghost"
+            className="w-full justify-start"
+            onClick={closeSheet}
+          >
+            <MessagesSquare className="mr-2 h-4 w-4" />
+            chatbot
+          </Button>
+        </Link> 
+
+        <Link href={'/tutorials'}>
         <Button
           variant="ghost"
           className="w-full justify-start"
           onClick={closeSheet}
-        >
-          <MessageCircle className="mr-2 h-4 w-4" />
-          Comments
+          >
+          <Video className="mr-2 h-4 w-4" />
+          tutorials
         </Button>
-        <Button
-          variant="ghost"
-          className="w-full justify-start"
-          onClick={closeSheet}
-        >
-          <BarChart className="mr-2 h-4 w-4" />
-          Analytics
-        </Button>
-        <Button
+          </Link>
+        {/* <Button
           variant="ghost"
           className="w-full justify-start"
           onClick={closeSheet}
         >
           <Settings className="mr-2 h-4 w-4" />
           Settings
-        </Button>
+        </Button> */}
       </nav>
     </div>
   );
