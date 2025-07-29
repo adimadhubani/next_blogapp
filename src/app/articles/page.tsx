@@ -9,22 +9,23 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { fetchArticleByQuery } from "@/lib/query/fetch-articles";
 import Link from "next/link";
 
+interface PageProps {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
 const ITEMS_PER_PAGE = 3; // Number of items per page
 
-const Page = async ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
-  const searchText = Array.isArray(searchParams.search) 
-    ? searchParams.search[0] 
+const Page = async ({ searchParams = {} }: PageProps) => {
+  const searchText = Array.isArray(searchParams.search)
+    ? searchParams.search[0]
     : searchParams.search || "";
-  
+
   const pageParam = Array.isArray(searchParams.page)
     ? searchParams.page[0]
     : searchParams.page;
+
   const currentPage = Number(pageParam) || 1;
-  
+
   const skip = (currentPage - 1) * ITEMS_PER_PAGE;
   const take = ITEMS_PER_PAGE;
 
