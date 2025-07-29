@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { Suspense } from "react";
 
+
 const page = async () => {
   return (
     <main>
@@ -25,7 +26,7 @@ const page = async () => {
             <TopArticles/>
           </Suspense>
 
-          <div className="mt-12 text-center">
+          {/* <div className="mt-12 text-center">
             <Link href={"/articles"}>
               <Button
                 variant="outline"
@@ -34,7 +35,7 @@ const page = async () => {
                 View All Articles
               </Button>
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
       <BlogFooter />
