@@ -26,7 +26,7 @@ const page = async () => {
             <TopArticles/>
           </Suspense>
 
-          {/* <div className="mt-12 text-center">
+          <div className="mt-12 text-center">
             <Link href={"/articles"}>
               <Button
                 variant="outline"
@@ -35,7 +35,7 @@ const page = async () => {
                 View All Articles
               </Button>
             </Link>
-          </div> */}
+          </div>
         </div>
       </section>
       <BlogFooter />
