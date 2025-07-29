@@ -8,23 +8,26 @@ import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchArticleByQuery } from "@/lib/query/fetch-articles";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-interface PageProps {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
+// interface PageProps {
+//   searchParams?: Record<string, string | string[] | undefined>;
+// }
 
 const ITEMS_PER_PAGE = 3; // Number of items per page
 
-const Page = async ({ searchParams = {} }: PageProps) => {
-  const searchText = Array.isArray(searchParams.search)
-    ? searchParams.search[0]
-    : searchParams.search || "";
 
-  const pageParam = Array.isArray(searchParams.page)
-    ? searchParams.page[0]
-    : searchParams.page;
+export default async function Page({ searchParams }: {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}) {
+  const search = searchParams?.search;
+  const page = searchParams?.page;
 
+  const searchText = Array.isArray(search) ? search[0] : search || "";
+  const pageParam = Array.isArray(page) ? page[0] : page;
   const currentPage = Number(pageParam) || 1;
+
+  if (currentPage < 1) redirect("/articles?page=1");
 
   const skip = (currentPage - 1) * ITEMS_PER_PAGE;
   const take = ITEMS_PER_PAGE;
@@ -98,4 +101,4 @@ const Page = async ({ searchParams = {} }: PageProps) => {
   );
 };
 
-export default Page;
+// export default Page;
