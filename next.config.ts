@@ -92,6 +92,12 @@ const nextConfig: NextConfig = {
     },
     // Optional: Add if you want to use Turbopack
     // turbo: true
+    turbo: {
+      // Preserve your webpack alias in Turbopack
+      resolveAlias: {
+        '@': path.join(__dirname, 'src'),
+      }
+    }
   },
 
   webpack: (config) => {

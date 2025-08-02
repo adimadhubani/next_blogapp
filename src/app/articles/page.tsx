@@ -10,6 +10,7 @@ import { fetchArticleByQuery } from "@/lib/query/fetch-articles";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+
 interface PageProps {
   searchParams?: Record<string, string | string[] | undefined>;
 }
