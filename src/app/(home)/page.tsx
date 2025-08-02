@@ -4,9 +4,17 @@ import { TopArticles } from "@/components/home/top-articles";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { Suspense } from "react";
+import { currentUser } from "@clerk/nextjs/server";
+import Guest from "@/components/Guest";
 
 
 const page = async () => {
+
+  const user = await currentUser();
+
+  if (!user) {
+    return <Guest />;
+  }
   return (
     <main>
       <HeroSection />
